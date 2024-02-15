@@ -20,7 +20,7 @@ function removeBackgroundColorById(elementId) {
 };
 
 
-// other start
+document.addEventListener("keyup", keyboardButtonPress)
 function keyboardButtonPress(event) {
 
     const playerPressed = event.key;
@@ -32,19 +32,28 @@ function keyboardButtonPress(event) {
     // check matched or not
     if (playerPressed === alphabet) {
 
+        const currentScoreElement = document.getElementById("current_score");
+        const currentScoreText = currentScoreElement.innerText;
+        const currentScore = parseInt(currentScoreText);
+        const score = currentScore + 1;
+        currentScoreElement.innerText = score;
+
         removeBackgroundColorById(alphabet);
         continueGame();
 
     }
     else {
-        console.log("you miss point");
+
+        const currentLifeElement = document.getElementById("current_life");
+        const currentLifeText = currentLifeElement.innerText;
+        const currentLife = parseInt(currentLifeText);
+        const life = currentLife - 1;
+        currentLifeElement.innerText = life;
+        
     }
 
 }
 
-document.addEventListener("keyup", keyboardButtonPress)
-
-// other end
 
 function getARandomAlphabet() {
     const alphabetString = "abcdefghijklmnopqrstuvwxyz";
