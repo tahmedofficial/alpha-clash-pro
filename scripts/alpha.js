@@ -14,6 +14,38 @@ function setBackgroundColorById(elementId) {
     element.classList.add("bg-orange-400");
 };
 
+function removeBackgroundColorById(elementId) {
+    const element = document.getElementById(elementId);
+    element.classList.remove("bg-orange-400");
+};
+
+
+// other start
+function keyboardButtonPress(event) {
+
+    const playerPressed = event.key;
+
+    // get the expected press
+    const currentAlphabet = document.getElementById("current_alphabet");
+    const alphabet = currentAlphabet.innerText.toLowerCase();
+
+    // check matched or not
+    if (playerPressed === alphabet) {
+
+        removeBackgroundColorById(alphabet);
+        continueGame();
+
+    }
+    else {
+        console.log("you miss point");
+    }
+
+}
+
+document.addEventListener("keyup", keyboardButtonPress)
+
+// other end
+
 function getARandomAlphabet() {
     const alphabetString = "abcdefghijklmnopqrstuvwxyz";
     const alphabets = alphabetString.split("");
